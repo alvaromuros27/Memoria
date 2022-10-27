@@ -3,6 +3,7 @@ package com.example.memoria;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
@@ -73,9 +74,49 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    private void cargarBotones(){
+        botonReinicio = findViewById(R.id.botonReiniciar);
+        botonSalida = findViewById(R.id.botonSalir);
+        botonReinicio.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                init();
+            }
+        });
 
+        botonSalida.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
+    }
+
+    private void cargarTexto(){
+        textoPuntuacion = findViewById(R.id.texto_puntuacion);
+        puntuacion=0;
+        aciertos=0;
+        textoPuntuacion.setText("Puntuación: " +puntuacion);
+    }
+
+    private void cargarImagenes(){
+        imagenes = new int[]{
+         R.drawable.la0,
+         R.drawable.la1,
+         R.drawable.la2,
+         R.drawable.la3,
+         R.drawable.la4,
+         R.drawable.la5,
+         R.drawable.la6,
+         R.drawable.la7
+        };
+        fondo = R.drawable.istockphoto_1220548793_612x612;
+    }
 
     private void init(){
         cargarTablero();
+        cargarBotones();
+        cargarTexto();
+        cargarImagenes();
     }
 }
