@@ -6,10 +6,14 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.os.Handler;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -113,10 +117,27 @@ public class MainActivity extends AppCompatActivity {
         fondo = R.drawable.istockphoto_1220548793_612x612;
     }
 
+    private ArrayList<Integer> barajar(int longuitud){
+        ArrayList<Integer> result = new ArrayList<Integer>();
+        for(int i=0; i<longuitud*2; i++){
+            result.add(i % longuitud);
+        }
+        Collections.shuffle(result);
+
+        return result;
+    }
+
     private void init(){
         cargarTablero();
         cargarBotones();
         cargarTexto();
         cargarImagenes();
+        arrayDesordenado = barajar(imagenes.length);
+        for(int i=0; i<tablero.length; i++){
+            tablero[i].setScaleType(ImageView.ScaleType.CENTER_CROP);
+
+            tablero[i].setImageResource(fondo);
+
+        }
     }
 }
