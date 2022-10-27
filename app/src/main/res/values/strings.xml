@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Memoria</string>
+    <string name="boton_cerrar_juego">Salir</string>
+    <string name="boton_reiniciar_juego">Reiniciar</string>
+</resources>
