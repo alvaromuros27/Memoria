@@ -1,18 +1,20 @@
 package com.example.memoria;
 
 import androidx.appcompat.app.AppCompatActivity;
-
+import android.app.Activity;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.os.Handler;
+import android.widget.Toast;
+
+import androidx.annotation.Nullable;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collection;
 import java.util.Collections;
 
 public class MainActivity extends AppCompatActivity {
@@ -31,13 +33,19 @@ public class MainActivity extends AppCompatActivity {
     ImageButton primero;
     int numeroPrimero, numeroSegundo;
     boolean bloqueo = false;
-    final Handler handler = new Handler();
+    Handler handler = new Handler();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         init();
+
+        Bundle datos = this.getIntent().getExtras();
+        String recuperamos = datos.getString("variable");
+        TextView textView = findViewById(R.id.textView2);
+        textView.setText(" "+recuperamos+" ");
+
     }
 
     private void cargarTablero(){
@@ -127,6 +135,10 @@ public class MainActivity extends AppCompatActivity {
         return result;
     }
 
+    private void comprobar(int i, final ImageButton imgb){
+
+    }
+
     private void init(){
         cargarTablero();
         cargarBotones();
@@ -135,9 +147,32 @@ public class MainActivity extends AppCompatActivity {
         arrayDesordenado = barajar(imagenes.length);
         for(int i=0; i<tablero.length; i++){
             tablero[i].setScaleType(ImageView.ScaleType.CENTER_CROP);
+            tablero[i].setImageResource(imagenes[arrayDesordenado.get(i)]);
 
-            tablero[i].setImageResource(fondo);
+        }
+      handler.postDelayed(new Runnable() {
+           @Override
+           public void run() {
 
+               for(int i=0; i<tablero.length; i++){
+                   tablero[i].setScaleType(ImageView.ScaleType.CENTER_CROP);
+
+                   tablero[i].setImageResource(fondo);
+               }
+           }
+       },5000);
+
+        for(int i=0; i<tablero.length; i++){
+            final int j = i;
+            tablero[i].setEnabled(true);
+            tablero[i].setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    if(!bloqueo){
+                        comprobar(j, tablero[j]);
+                    }
+                }
+            });
         }
     }
 }

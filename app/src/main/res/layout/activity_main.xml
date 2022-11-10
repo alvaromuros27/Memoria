@@ -10,14 +10,14 @@
         android:id="@+id/table"
         android:layout_width="340dp"
         android:layout_height="640dp"
-        android:layout_marginTop="100dp"
-        android:padding="10dp"
+        android:layout_marginTop="13dp"
         android:layout_marginBottom="16dp"
+        android:padding="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.56"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toBottomOf="@+id/textView2">
 
         <TableRow
             android:layout_width="match_parent"
@@ -174,10 +174,10 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal"
+            android:layout_height="65dp"
+            android:layout_marginTop="50dp"
             android:gravity="center_horizontal"
-            android:layout_marginTop="50dp">
+            android:orientation="horizontal">
 
             <Button
                 android:id="@+id/botonReiniciar"
@@ -190,23 +190,38 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/boton_cerrar_juego"></Button>
+
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="horizontal"
+            android:layout_marginTop="50dp"
             android:gravity="center_horizontal"
-            android:layout_marginTop="50dp">
+            android:orientation="horizontal">
 
             <TextView
                 android:id="@+id/texto_puntuacion"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="122dp"
+                android:layout_height="63dp"
                 android:layout_gravity="center"
-                android:textSize="25dp">
+                tools:layout_editor_absoluteX="16dp"
+                tools:layout_editor_absoluteY="652dp">
 
             </TextView>
         </LinearLayout>
     </TableLayout>
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="180dp"
+        android:layout_marginTop="43dp"
+        android:layout_marginEnd="173dp"
+        android:text="TextView"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
